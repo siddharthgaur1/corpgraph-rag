@@ -87,7 +87,7 @@ def run(company_bse_codes: dict[str, str]) -> None:
         try:
             ingest_company(client, ticker, bse_code)
             print(f"[{i}/{len(company_bse_codes)}] loaded {ticker}")
-        except Exception as e:
+        except Exception as e:  # noqa: BLE001 -- one bad row must not abort the batch
             print(f"[{i}/{len(company_bse_codes)}] FAILED {ticker}: {e}", file=sys.stderr)
     client.close()
 

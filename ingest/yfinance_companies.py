@@ -65,7 +65,7 @@ def run(as_of_date: str) -> None:
         try:
             ingest_company(client, ticker, as_of_date)
             print(f"[{i}/{len(tickers)}] loaded {ticker}")
-        except Exception as e:
+        except Exception as e:  # noqa: BLE001 -- one bad row must not abort the batch
             print(f"[{i}/{len(tickers)}] FAILED {ticker}: {e}", file=sys.stderr)
     client.close()
 
@@ -73,4 +73,4 @@ def run(as_of_date: str) -> None:
 if __name__ == "__main__":
     import datetime
 
-    run(as_of_date=datetime.date.today().isoformat())
+    run(as_of_date=datetime.datetime.now(tz=datetime.timezone.utc).date().isoformat())

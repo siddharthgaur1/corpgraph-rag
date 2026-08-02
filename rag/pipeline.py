@@ -4,7 +4,14 @@ from __future__ import annotations
 from dataclasses import dataclass
 
 from graph.neo4j_client import Neo4jClient, ReadOnlyViolation
-from . import answer_generator, cypher_generator, enricher, query_understander, traverser
+
+from . import (
+    answer_generator,
+    cypher_generator,
+    enricher,
+    query_understander,
+    traverser,
+)
 from .answer_generator import Answer
 from .cypher_generator import UnsafeCypherError
 from .llm import ClaudeLLM
@@ -33,7 +40,7 @@ def run_query(question: str, client: Neo4jClient | None = None, llm=None) -> Pip
         rows = traverser.traverse(client, cypher)
     except ReadOnlyViolation as e:
         return PipelineResult(cypher=cypher, graph_rows=[], answer=Answer(answer=""), error=str(e))
-    except Exception as e:
+    except Exception as e:  # noqa: BLE001 -- top-level pipeline guard, converts to error response instead of crashing
         return PipelineResult(cypher=cypher, graph_rows=[], answer=Answer(answer=""), error=f"Query execution failed: {e}")
 
     graph_text = traverser.serialize(rows)

@@ -18,7 +18,7 @@ def _get_collection():
 
         client = chromadb.PersistentClient(path=_PERSIST_DIR)
         return client.get_collection(_COLLECTION_NAME)
-    except Exception:
+    except Exception:  # noqa: BLE001 -- enrichment is best-effort, optional
         return None  # ponytail: no SEBI Explorer collection available yet, enrichment is optional
 
 
@@ -34,6 +34,6 @@ def enrich(company_names: list[str], n_results: int = 3) -> list[dict]:
             metas = result.get("metadatas", [[]])[0]
             for doc, meta in zip(docs, metas):
                 snippets.append({"company": name, "snippet": doc, "order_id": meta.get("order_id")})
-        except Exception:
+        except Exception:  # noqa: BLE001, S112 -- enrichment is best-effort, optional
             continue
     return snippets

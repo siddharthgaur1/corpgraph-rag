@@ -68,7 +68,7 @@ def run(portfolios: list[dict]) -> None:
         try:
             ingest_portfolio(client, **p)
             print(f"[{i}/{len(portfolios)}] loaded {p['fund_name']}")
-        except Exception as e:
+        except Exception as e:  # noqa: BLE001 -- one bad row must not abort the batch
             print(f"[{i}/{len(portfolios)}] FAILED {p['fund_name']}: {e}", file=sys.stderr)
     client.close()
 

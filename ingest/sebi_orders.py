@@ -70,7 +70,7 @@ def run(jsonl_path: str) -> None:
             ingest_order(client, parse_line(line))
             if i % 500 == 0:
                 print(f"[{i}/{len(lines)}] orders loaded")
-        except Exception as e:
+        except Exception as e:  # noqa: BLE001 -- one bad row must not abort the batch
             print(f"[{i}/{len(lines)}] FAILED: {e}", file=sys.stderr)
     client.close()
     print(f"Done: {len(lines)} order records processed from {path}")

@@ -17,7 +17,7 @@ def main():
     print("Applying schema constraints...")
     schema.apply()
     print("Loading NIFTY500 seed company metadata from yfinance...")
-    yfinance_companies.run(as_of_date=datetime.date.today().isoformat())
+    yfinance_companies.run(as_of_date=datetime.datetime.now(tz=datetime.timezone.utc).date().isoformat())
     print("Done. Run ingest.sebi_orders / bse_directors / mf_holdings separately once you have source data.")
 
 
