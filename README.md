@@ -102,6 +102,21 @@ pytest
 `tests/test_read_only_guard.py` is the one that matters most — it's the regression test for
 "the LLM can never write to the graph," independent of whether Neo4j is running.
 
+## Results
+
+No accuracy number for generated-Cypher correctness or answer quality ships
+in this repo — that needs a labeled set of questions with expected Cypher
+or expected answers, which doesn't exist yet (`TODO(metric)`). What's
+verified without any LLM call: `pytest tests/test_read_only_guard.py` — the
+regression test for "the LLM can never write to the graph," independent of
+whether Neo4j is even running.
+
+## Limitations
+
+No measured Cypher-generation accuracy (see Results above) — correctness
+currently rests on the 15 few-shot examples and manual testing via the demo
+queries, not a scored eval set.
+
 ## Notes on scope
 
 - `ingest/nifty500_tickers.csv` ships a 20-ticker sample, not the full NIFTY500 — extend it for a bigger seed graph.
