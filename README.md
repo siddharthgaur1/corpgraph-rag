@@ -1,5 +1,9 @@
 # corpgraph-rag
 
+[![Portfolio](https://img.shields.io/badge/↩-siddharthgaur1-111827?style=flat-square)](https://github.com/siddharthgaur1)
+[![CI](https://github.com/siddharthgaur1/corpgraph-rag/actions/workflows/ci.yml/badge.svg)](https://github.com/siddharthgaur1/corpgraph-rag/actions/workflows/ci.yml)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
+
 GraphRAG over a Neo4j knowledge graph of Indian corporate entities (companies, directors,
 auditors, promoters, SEBI orders, mutual funds). Ask an investigative question in plain
 English, get back an LLM-generated answer grounded in an actual graph traversal — plus the
