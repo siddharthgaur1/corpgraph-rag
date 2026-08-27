@@ -2,12 +2,18 @@
 
 [![Portfolio](https://img.shields.io/badge/↩-siddharthgaur1-111827?style=flat-square)](https://github.com/siddharthgaur1)
 [![CI](https://github.com/siddharthgaur1/corpgraph-rag/actions/workflows/ci.yml/badge.svg)](https://github.com/siddharthgaur1/corpgraph-rag/actions/workflows/ci.yml)
+[![Python 3.11](https://img.shields.io/badge/python-3.11-blue.svg)](https://www.python.org/downloads/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
+[![Neo4j](https://img.shields.io/badge/Neo4j-5%2B-4581C3.svg)](https://neo4j.com/)
 
 GraphRAG over a Neo4j knowledge graph of Indian corporate entities (companies, directors,
 auditors, promoters, SEBI orders, mutual funds). Ask an investigative question in plain
 English, get back an LLM-generated answer grounded in an actual graph traversal — plus the
 Cypher that produced it and an interactive visualization of the subgraph.
+
+![corpgraph-rag Streamlit explorer with preset investigative queries](docs/screenshots/app.png)
+
+<sub>The explorer against a real, freshly-ingested graph (20 NIFTY-seed companies via yfinance) — no LLM call made for this screenshot, since answering a query needs a paid Anthropic key.</sub>
 
 ## Architecture
 
