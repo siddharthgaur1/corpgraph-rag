@@ -121,6 +121,12 @@ verified without any LLM call: `pytest tests/test_read_only_guard.py` — the
 regression test for "the LLM can never write to the graph," independent of
 whether Neo4j is even running.
 
+The optional GATv2 link predictor (`gnn/link_predictor.py`) prints a validation
+ROC-AUC on a held-out 10% of edges each epoch, but no AUC is committed here: it
+trains on whatever graph you have ingested (20 companies by default), with an
+unseeded edge split, so a number would describe that one sample rather than the
+method. Its top-10 "missing links" are leads to check, not findings.
+
 ## Limitations
 
 No measured Cypher-generation accuracy (see Results above) — correctness
